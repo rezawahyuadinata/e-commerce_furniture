@@ -4,17 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\FrontendController;
 
-
-class ProductRequest extends FormRequest
+class ProductGalleryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-
     public function authorize()
     {
         return Auth::check();
@@ -28,9 +25,7 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
-            'description' => 'required',
-            'price' => 'required|integer'
+            'files.*' => 'required|image',
         ];
     }
 }
